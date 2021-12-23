@@ -11,6 +11,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: timreid/mill-builder:latest
+      - user: builduser
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
