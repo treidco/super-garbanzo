@@ -45,4 +45,4 @@ jobs:
           key: v1-dependencies--{{ checksum "build.sc" }}
 
       # run tests!
-      - run: /scripts/run_build.sh build core.test
+      - run: /home/builduser/scripts/run_build.sh build core.test
