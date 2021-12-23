@@ -10,14 +10,14 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
       # specify the version you desire here
-      - image: nightscape/scala-mill
+      - image: timreid/mill-builder:0.1
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/postgres:9.4
 
-    working_directory: ~/repo
+    working_directory: /workdir
 
     environment:
       # Customize the JVM maximum heap limit
@@ -36,11 +36,11 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: cat /dev/null | mill core.test.compile
+      - run: cat /dev/null | mill core.run
 
       - save_cache:
           paths:
-            - ~/.m2
+            - ~/.ivy2
           key: v1-dependencies--{{ checksum "build.sc" }}
 
       # run tests!
